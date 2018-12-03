@@ -19,15 +19,14 @@ class Account
     add_withdraw_to_tx(amount)
   end
 
-
   private
 
   def add_deposit_to_tx(amount)
-    @transactions.push({timestamp: Time.now, credit: amount, debit: 0, balance: @balance})
+    @transactions.push({timestamp: Time.now.strftime('%d/%m/%Y'), credit: amount, debit: 0, balance: @balance})
   end
 
   def add_withdraw_to_tx(amount)
-    @transactions.push({timestamp: Time.now, credit: 0, debit: amount, balance: @balance})
+    @transactions.push({timestamp: Time.now.strftime('%d/%m/%Y'), credit: 0, debit: amount, balance: @balance})
   end
 
 end
