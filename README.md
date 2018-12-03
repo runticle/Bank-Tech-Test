@@ -2,9 +2,9 @@
 
 This is a simple Bank app to be used with irb in the command line.
 
-I have decided to fulfil the requirements using just one class, the Account class.
+I have decided to use an Account, Transaction and Printer class setup.
 
-The code passes all tests and linting tests. 
+The code passes all tests and linting tests and has 98% test coverage.
 
 Clone the repo, run bundle and in your terminal run:
 
@@ -13,9 +13,16 @@ irb
 require './lib/account'
 ```
 
+To run tests in terminal:
+
+```
+rspec
+rubocop
+```
+
 # Tech
 
-I have used Ruby to build the bank. RSpec and Rubocop have been used for testing the requirements and the Timecop gem has been used to test the timestamp functionality.
+I have used Ruby to build the bank. RSpec and Rubocop have been used for testing the requirements and the Timecop gem has been used to test the timestamp functionality. Simplecov has been used to test coverage.
 
 # Features
 - accounts: Users can create new accounts
