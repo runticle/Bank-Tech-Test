@@ -3,3 +3,5 @@ AllCops:
     - 'spec/spec_helper.rb'
 Metrics/BlockLength:
   Max: 70
+Metrics/LineLength:
+  Max: 85
