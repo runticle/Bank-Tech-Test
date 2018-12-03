@@ -63,5 +63,13 @@ describe Account do
       account.deposit(100)
       expect {account.print}.to output(heading + "\n" + tx).to_stdout
     end
+
+    it 'prints the transactions in reverse order' do
+      heading = 'Date || Credit || Debit || Balance'
+      tx = "01/01/2000 || 0 || 50 || 50\n01/01/2000 || 100 || 0 || 100\n"
+      account.deposit(100)
+      account.withdraw(50)
+      expect {account.print}.to output(heading + "\n" + tx).to_stdout
+    end
   end
 end
