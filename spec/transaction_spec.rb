@@ -1,19 +1,19 @@
 require 'transaction'
 
 describe Transaction do
-  describe '#deposit' do
-    it 'should return a transa tion hash' do
-      assertion = described_class.deposit(5, 0)
-      expectation = { timestamp: '03/12/2018', credit: 5, debit: 0, balance: 5 }
-      expect(assertion).to eq expectation
-    end
-  end
+  let(:transaction) { described_class.new(100.0, 100.0, 'deposit') }
 
-  describe '#withraw' do
-    it 'should return a transaction hash' do
-      assertion = described_class.withdraw(5, 10)
-      expectation = { timestamp: '03/12/2018', credit: 0, debit: 5, balance: 5 }
-      expect(assertion).to eq expectation
+  describe '#new' do
+    it 'should have a current balance' do
+      expect(transaction.balance).to eq 100.0
+    end
+
+    it 'should have a credit amount' do
+      expect(transaction.credit).to eq 100.0
+    end
+
+    it 'should have a debit amount' do
+      expect(transaction.debit).to eq 0.0
     end
   end
 end
