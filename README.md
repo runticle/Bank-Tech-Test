@@ -2,7 +2,11 @@
 
 This is a simple Bank app to be used with irb in the command line.
 
-Clone the repo, run bundle and in your terminal run: 
+I have decided to fulfil the requirements using just one class, the Account class.
+
+The code passes all tests and linting tests. 
+
+Clone the repo, run bundle and in your terminal run:
 
 ```
 irb
