@@ -2,7 +2,7 @@
 
 This is a simple Bank app to be used with irb in the command line.
 
-I have decided to use an Account, Transaction and Printer class setup. The Account class stores User data and calls methods to other classes. The Transaction class returns a hash of the transaction and is stored in the account class. The Printer class receives transaction history and prints it to the stdout. 
+I have decided to use an Account, Transaction and Printer class setup. The Account class stores User data and calls methods to other classes. The Transaction class returns an instance of itself containing the transaction and is stored in the account class. The Printer class receives transaction history and prints it to the stdout.
 
 The code passes all tests and linting tests and has 100% test coverage.
 
