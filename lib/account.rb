@@ -10,7 +10,8 @@ class Account
   end
 
   def balance
-    return 0 if @transactions.length == 0
+    return 0 if @transactions.empty?
+
     @transactions.last[:balance]
   end
 
@@ -21,6 +22,7 @@ class Account
   def withdraw(amount)
     msg = 'You do not have enough money to withdraw this amount'
     raise msg if (balance - amount) < 0
+
     @transactions << Transaction.withdraw(amount, balance)
   end
 
