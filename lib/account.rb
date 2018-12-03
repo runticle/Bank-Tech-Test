@@ -6,12 +6,12 @@ class Account
   attr_reader :transactions
 
   def initialize
-    @balance = 0
+    @balance = 0.00
     @transactions = []
   end
 
   def balance
-    return 0 if @transactions.empty?
+    return 0.00 if @transactions.empty?
 
     @transactions.last[:balance]
   end
@@ -22,7 +22,7 @@ class Account
 
   def withdraw(amount)
     msg = 'You do not have enough money to withdraw this amount'
-    raise msg if (balance - amount) < 0
+    raise msg if (balance - amount) < 0.00
 
     @transactions << Transaction.withdraw(amount, balance)
   end
