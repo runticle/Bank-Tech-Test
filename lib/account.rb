@@ -19,6 +19,13 @@ class Account
     add_withdraw_to_tx(amount)
   end
 
+  def print
+    puts 'Date || Credit || Debit || Balance'
+    @transactions.each { |tx|
+      puts "#{tx[:timestamp]} || #{tx[:credit]} || #{tx[:debit]} || #{tx[:balance]}"
+    }
+  end
+
   private
 
   def add_deposit_to_tx(amount)
