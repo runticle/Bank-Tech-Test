@@ -1,4 +1,5 @@
 require 'account'
+require 'timecop'
 
 describe Account do
   let(:account) { described_class.new }
@@ -13,6 +14,13 @@ describe Account do
     it 'adds £100 to the account' do
       account.deposit(100)
       expect(account.balance).to eq 100
+    end
+
+    it "stores a timestamp of the deposit" do
+      Timecop.freeze(Time.local(2000))
+      account.deposit(100)
+      Timecop.return
+      expect(account.transactions[0][:timestamp]).to eq Time.local(2000)
     end
   end
 
