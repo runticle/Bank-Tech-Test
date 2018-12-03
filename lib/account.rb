@@ -1,5 +1,4 @@
 class Account
-
   attr_reader :balance, :transactions
 
   def initialize
@@ -15,25 +14,25 @@ class Account
   def withdraw(amount)
     msg = 'You do not have enough money to withdraw this amount'
     raise msg if (@balance - amount) < 0
+
     @balance -= amount
     add_withdraw_to_tx(amount)
   end
 
   def print
     puts 'Date || Credit || Debit || Balance'
-    @transactions.reverse.each { |tx|
+    @transactions.reverse_each do |tx|
       puts "#{tx[:timestamp]} || #{tx[:credit]} || #{tx[:debit]} || #{tx[:balance]}"
-    }
+    end
   end
 
   private
 
   def add_deposit_to_tx(amount)
-    @transactions.push({timestamp: Time.now.strftime('%d/%m/%Y'), credit: amount, debit: 0, balance: @balance})
+    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'), credit: amount, debit: 0, balance: @balance)
   end
 
   def add_withdraw_to_tx(amount)
-    @transactions.push({timestamp: Time.now.strftime('%d/%m/%Y'), credit: 0, debit: amount, balance: @balance})
+    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'), credit: 0, debit: amount, balance: @balance)
   end
-
 end

@@ -24,7 +24,7 @@ describe Account do
       expect(account.balance).to eq 100
     end
 
-    it "stores a timestamp of the deposit" do
+    it 'stores a timestamp of the deposit' do
       account.deposit(100)
       expect(account.transactions[0][:timestamp]).to eq Time.local(2000).strftime('%d/%m/%Y')
     end
@@ -42,7 +42,7 @@ describe Account do
       expect(account.balance).to eq 100
     end
 
-    it "stores a timestamp of the withdrawal" do
+    it 'stores a timestamp of the withdrawal' do
       account.deposit(200)
       Timecop.freeze(Time.local(2001))
       account.withdraw(100)
@@ -50,7 +50,7 @@ describe Account do
     end
   end
 
-  describe "#print" do
+  describe '#print' do
     it 'has a store of all transactions' do
       10.times { account.deposit(10) }
       10.times { account.withdraw(5) }
@@ -61,7 +61,7 @@ describe Account do
       heading = 'Date || Credit || Debit || Balance'
       tx = "01/01/2000 || 100 || 0 || 100\n"
       account.deposit(100)
-      expect {account.print}.to output(heading + "\n" + tx).to_stdout
+      expect { account.print }.to output(heading + "\n" + tx).to_stdout
     end
 
     it 'prints the transactions in reverse order' do
@@ -69,7 +69,7 @@ describe Account do
       tx = "01/01/2000 || 0 || 50 || 50\n01/01/2000 || 100 || 0 || 100\n"
       account.deposit(100)
       account.withdraw(50)
-      expect {account.print}.to output(heading + "\n" + tx).to_stdout
+      expect { account.print }.to output(heading + "\n" + tx).to_stdout
     end
   end
 end
