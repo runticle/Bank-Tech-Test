@@ -4,7 +4,7 @@ This is a simple Bank app to be used with irb in the command line.
 
 I have decided to use an Account, Transaction and Printer class setup.
 
-The code passes all tests and linting tests and has 98% test coverage.
+The code passes all tests and linting tests and has 100% test coverage.
 
 Clone the repo, run bundle and in your terminal run:
 
