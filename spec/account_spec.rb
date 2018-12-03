@@ -1,10 +1,9 @@
-require "account"
+require 'account'
 
 describe Account do
+  let(:account) { described_class.new }
 
-    let(:account) { described_class.new }
-
-  describe "#balance" do
+  describe '#balance' do
     it 'starts with 0 balance' do
       expect(account.balance).to eq 0
     end
@@ -20,7 +19,7 @@ describe Account do
   describe '#withdraw' do
     it 'cannot withdraw to a negative balance' do
       msg = 'You do not have enough money to withdraw this amount'
-      expect(account.withdraw(1)).to raise_error(msg)
+      expect { account.withdraw(1) }.to raise_error(msg)
     end
 
     it 'withdraws £100 from the account' do
