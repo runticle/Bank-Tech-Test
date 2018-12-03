@@ -11,9 +11,9 @@ describe Account do
   end
 
   describe '#deposit' do
-    it 'adds a trasaction instance to the transaction array' do
-      account.deposit(100.00)
-      expect(account.transactions.length).to eq 1
+    it 'adds to the balance' do
+      account.deposit(100.0)
+      expect(account.balance).to eq 100.0
     end
   end
 
@@ -23,19 +23,14 @@ describe Account do
       expect { account.withdraw(1.00) }.to raise_error(msg)
     end
 
-    it 'adds a trasaction instance to the transaction array' do
+    it 'should reduce the balance appropriately' do
       account.deposit(200.00)
       account.withdraw(100.00)
-      expect(account.transactions.length).to eq 2
+      expect(account.balance).to eq 100.0
     end
   end
 
   describe '#print' do
-    it 'has a store of all transactions' do
-      10.times { account.deposit(10.00) }
-      expect(account.transactions.length).to eq 10
-    end
-
     it 'responds to print' do
       expect(account).to respond_to(:print)
     end
