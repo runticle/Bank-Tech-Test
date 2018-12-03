@@ -15,5 +15,7 @@ class Account
     msg = 'You do not have enough money to withdraw this amount'
     raise msg if (@balance - amount) < 0
     @balance -= amount
+    @transactions.push({timestamp: Time.now, credit: 0, debit: amount, balance: @balance})
   end
+
 end
