@@ -1,18 +1,19 @@
 require_relative 'transaction'
 require_relative 'printer'
+require_relative 'statement'
 
 # Account class
 class Account
-  attr_reader :transactions, :balance
+  attr_reader :balance
 
   def initialize
-    @transactions = []
+    @statement = Statement.new
     @balance = 0.0
   end
 
   def deposit(amount)
     @balance += amount
-    @transactions << Transaction.new(amount, @balance, 'deposit')
+    @statement.add(Transaction.new(amount, @balance, 'deposit'))
   end
 
   def withdraw(amount)
@@ -20,10 +21,10 @@ class Account
     raise msg if (@balance - amount) < 0.00
 
     @balance -= amount
-    @transactions << Transaction.new(amount, @balance, 'withdraw')
+    @statement.add(Transaction.new(amount, @balance, 'withdraw'))
   end
 
   def print
-    Printer.statement(transactions)
+    Printer.statement(@statement.transactions)
   end
 end
