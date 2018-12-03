@@ -3,28 +3,24 @@ require_relative 'printer'
 
 # Account class
 class Account
-  attr_reader :transactions
+  attr_reader :transactions, :balance
 
   def initialize
-    @balance = 0.00
     @transactions = []
-  end
-
-  def balance
-    return 0.00 if @transactions.empty?
-
-    @transactions.last[:balance]
+    @balance = 0
   end
 
   def deposit(amount)
-    @transactions << Transaction.deposit(amount, balance)
+    @balance += amount
+    @transactions << Transaction.new(amount, @balance, 'deposit')
   end
 
   def withdraw(amount)
+    @balance -= amount
     msg = 'You do not have enough money to withdraw this amount'
-    raise msg if (balance - amount) < 0.00
+    raise msg if (@balance - amount) < 0.00
 
-    @transactions << Transaction.withdraw(amount, balance)
+    @transactions << Transaction.new(amount, @balance, 'withdraw')
   end
 
   def print

@@ -1,4 +1,5 @@
 require 'account'
+require 'timecop'
 
 describe Account do
   let(:account) { described_class.new }
@@ -10,7 +11,7 @@ describe Account do
   end
 
   describe '#deposit' do
-    it 'adds a trasaction hash to the tx array' do
+    it 'adds a trasaction instance to the transaction array' do
       account.deposit(100.00)
       expect(account.transactions.length).to eq 1
     end
@@ -22,7 +23,7 @@ describe Account do
       expect { account.withdraw(1.00) }.to raise_error(msg)
     end
 
-    it 'adds a trasaction hash to the tx array' do
+    it 'adds a trasaction instance to the transaction array' do
       account.deposit(200.00)
       account.withdraw(100.00)
       expect(account.transactions.length).to eq 2
