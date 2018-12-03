@@ -56,5 +56,12 @@ describe Account do
       10.times { account.withdraw(5) }
       expect(account.transactions.length).to eq 20
     end
+
+    it 'prints the transactions in the desired format' do
+      heading = 'Date || Credit || Debit || Balance'
+      tx = "01/01/2000 || 100 || 0 || 100\n"
+      account.deposit(100)
+      expect {account.print}.to output(heading + "\n" + tx).to_stdout
+    end
   end
 end
