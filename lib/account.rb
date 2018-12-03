@@ -27,6 +27,6 @@ class Account
   end
 
   def print
-    @printer.statement(@statement.transactions)
+    @printer.print(@statement.transactions)
   end
 end

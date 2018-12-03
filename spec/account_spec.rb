@@ -3,7 +3,7 @@ require 'timecop'
 
 describe Account do
   let(:statement) { double(:statement, add: true) }
-  let(:printer) { double(:printer) }
+  let(:printer) { double(:printer, statement: true) }
   let(:transaction) { double(:transaction, new: true) }
   let(:account) { described_class.new(statement, printer, transaction) }
 
@@ -34,8 +34,10 @@ describe Account do
   end
 
   describe '#print' do
-    it 'responds to print' do
-      expect(account).to respond_to(:print)
+    it 'requests a printout from Print class' do
+      expect(printer).to receive(:print)
+      expect(statement).to receive(:transactions)
+      account.print
     end
   end
 end
