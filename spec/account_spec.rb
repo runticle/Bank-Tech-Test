@@ -26,7 +26,7 @@ describe Account do
 
     it "stores a timestamp of the deposit" do
       account.deposit(100)
-      expect(account.transactions[0][:timestamp]).to eq Time.local(2000)
+      expect(account.transactions[0][:timestamp]).to eq Time.local(2000).strftime('%d/%m/%Y')
     end
   end
 
@@ -46,7 +46,7 @@ describe Account do
       account.deposit(200)
       Timecop.freeze(Time.local(2001))
       account.withdraw(100)
-      expect(account.transactions[1][:timestamp]).to eq Time.local(2001)
+      expect(account.transactions[1][:timestamp]).to eq Time.local(2001).strftime('%d/%m/%Y')
     end
   end
 
