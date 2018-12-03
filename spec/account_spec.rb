@@ -41,5 +41,13 @@ describe Account do
       account.withdraw(100)
       expect(account.balance).to eq 100
     end
+
+    it "stores a timestamp of the withdrawal" do
+      account.deposit(200)
+      Timecop.freeze(Time.local(2001))
+      account.withdraw(100)
+      expect(account.transactions[1][:timestamp]).to eq Time.local(2001)
+    end
+
   end
 end
