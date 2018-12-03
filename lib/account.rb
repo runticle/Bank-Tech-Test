@@ -21,7 +21,7 @@ class Account
 
   def print
     puts 'Date || Credit || Debit || Balance'
-    @transactions.each { |tx|
+    @transactions.reverse.each { |tx|
       puts "#{tx[:timestamp]} || #{tx[:credit]} || #{tx[:debit]} || #{tx[:balance]}"
     }
   end
