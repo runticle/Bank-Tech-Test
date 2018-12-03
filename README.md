@@ -5,6 +5,7 @@
 - Account
   - deposit and withdrawals
   - prints balance and transaction history
+  - has timestamp for debits and credits
 
 # Tech
 
