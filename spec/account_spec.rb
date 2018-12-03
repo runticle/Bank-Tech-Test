@@ -30,10 +30,14 @@ describe Account do
     end
   end
 
-  describe 'Account' do
+  describe '#print' do
     it 'has a store of all transactions' do
       10.times { account.deposit(10) }
       expect(account.transactions.length).to eq 10
+    end
+
+    it 'responds to print' do
+      expect(account).to respond_to(:print)
     end
   end
 end
