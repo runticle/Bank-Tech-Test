@@ -19,15 +19,9 @@ describe Account do
   end
 
   describe '#deposit' do
-    it 'adds £100 to the account' do
+    it 'adds a trasaction hash to the tx array' do
       account.deposit(100)
-      expect(account.balance).to eq 100
-    end
-
-    it 'stores a timestamp of the deposit' do
-      expectation = Time.local(2000).strftime('%d/%m/%Y')
-      account.deposit(100)
-      expect(account.transactions[0][:timestamp]).to eq expectation
+      expect(account.transactions.length).to eq 1
     end
   end
 
@@ -37,26 +31,17 @@ describe Account do
       expect { account.withdraw(1) }.to raise_error(msg)
     end
 
-    it 'withdraws £100 from the account' do
+    it 'adds a trasaction hash to the tx array' do
       account.deposit(200)
       account.withdraw(100)
-      expect(account.balance).to eq 100
-    end
-
-    it 'stores a timestamp of the withdrawal' do
-      expectation = Time.local(2001).strftime('%d/%m/%Y')
-      account.deposit(200)
-      Timecop.freeze(Time.local(2001))
-      account.withdraw(100)
-      expect(account.transactions[1][:timestamp]).to eq expectation
+      expect(account.transactions.length).to eq 2
     end
   end
 
   describe '#print' do
     it 'has a store of all transactions' do
       10.times { account.deposit(10) }
-      10.times { account.withdraw(5) }
-      expect(account.transactions.length).to eq 20
+      expect(account.transactions.length).to eq 10
     end
 
     it 'prints the transactions in the desired format' do
