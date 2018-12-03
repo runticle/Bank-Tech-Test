@@ -3,7 +3,7 @@ class Printer
   def self.statement(transactions)
     puts 'Date || Credit || Debit || Balance'
     transactions.reverse_each do |tx|
-      timestamp = tx[:timestamp].strftime('%d/%m/%Y')
+      timestamp = tx[:timestamp]
       credit = tx[:credit]
       debit = tx[:debit]
       balance = tx[:balance]

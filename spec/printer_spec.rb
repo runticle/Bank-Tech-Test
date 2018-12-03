@@ -10,11 +10,14 @@ describe Printer do
   end
 
   let(:tx_1) do
-    [{ timestamp: Time.now, credit: 100, debit: 0, balance: 100 }]
+    [{ timestamp: Time.now.strftime('%d/%m/%Y'),
+       credit: 100, debit: 0, balance: 100 }]
   end
   let(:tx_2) do
-    [{ timestamp: Time.now, credit: 100, debit: 0, balance: 100 },
-     { timestamp: Time.now, credit: 0, debit: 50, balance: 50 }]
+    [{ timestamp: Time.now.strftime('%d/%m/%Y'),
+       credit: 100, debit: 0, balance: 100 },
+     { timestamp: Time.now.strftime('%d/%m/%Y'),
+       credit: 0, debit: 50, balance: 50 }]
   end
 
   describe '#statement' do
