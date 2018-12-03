@@ -10,6 +10,10 @@ class Transaction
     @debit = get_debit(type)
   end
 
+  def self.create(amount, balance, type)
+    new(amount, balance, type)
+  end
+
   def get_credit(type)
     return 0.0 if type == 'withdraw'
 
