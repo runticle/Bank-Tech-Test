@@ -7,7 +7,7 @@ class Account
 
   def initialize
     @transactions = []
-    @balance = 0
+    @balance = 0.0
   end
 
   def deposit(amount)
@@ -16,10 +16,10 @@ class Account
   end
 
   def withdraw(amount)
-    @balance -= amount
     msg = 'You do not have enough money to withdraw this amount'
     raise msg if (@balance - amount) < 0.00
 
+    @balance -= amount
     @transactions << Transaction.new(amount, @balance, 'withdraw')
   end
 

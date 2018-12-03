@@ -9,10 +9,14 @@ describe Printer do
     Timecop.return
   end
 
-  let (:transaction) {double(timestamp: Time.now.strftime('%d/%m/%Y'),
-    credit: 100.0, debit: 0.0, balance: 100.0)}
-  let (:transaction2) {double(:transaction, balance: 50.0,
-    debit: 50.0, credit: 0.0, timestamp: Time.now.strftime('%d/%m/%Y'))}
+  let(:transaction) do
+    double(timestamp: Time.now.strftime('%d/%m/%Y'),
+           credit: 100.0, debit: 0.0, balance: 100.0)
+  end
+  let(:transaction2) do
+    double(:transaction, balance: 50.0,
+                         debit: 50.0, credit: 0.0, timestamp: Time.now.strftime('%d/%m/%Y'))
+  end
 
   describe '#statement' do
     it 'prints the transactions in the desired format' do
