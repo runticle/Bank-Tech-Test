@@ -1,3 +1,4 @@
+# Account class
 class Account
   attr_reader :balance, :transactions
 
@@ -22,17 +23,23 @@ class Account
   def print
     puts 'Date || Credit || Debit || Balance'
     @transactions.reverse_each do |tx|
-      puts "#{tx[:timestamp]} || #{tx[:credit]} || #{tx[:debit]} || #{tx[:balance]}"
+      timestamp = tx[:timestamp]
+      credit = tx[:credit]
+      debit = tx[:debit]
+      balance = tx[:balance]
+      puts "#{timestamp} || #{credit} || #{debit} || #{balance}"
     end
   end
 
   private
 
   def add_deposit_to_tx(amount)
-    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'), credit: amount, debit: 0, balance: @balance)
+    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'),
+                       credit: amount, debit: 0, balance: @balance)
   end
 
   def add_withdraw_to_tx(amount)
-    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'), credit: 0, debit: amount, balance: @balance)
+    @transactions.push(timestamp: Time.now.strftime('%d/%m/%Y'),
+                       credit: 0, debit: amount, balance: @balance)
   end
 end

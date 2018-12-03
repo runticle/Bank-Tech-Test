@@ -25,8 +25,9 @@ describe Account do
     end
 
     it 'stores a timestamp of the deposit' do
+      expectation = Time.local(2000).strftime('%d/%m/%Y')
       account.deposit(100)
-      expect(account.transactions[0][:timestamp]).to eq Time.local(2000).strftime('%d/%m/%Y')
+      expect(account.transactions[0][:timestamp]).to eq expectation
     end
   end
 
@@ -43,10 +44,11 @@ describe Account do
     end
 
     it 'stores a timestamp of the withdrawal' do
+      expectation = Time.local(2001).strftime('%d/%m/%Y')
       account.deposit(200)
       Timecop.freeze(Time.local(2001))
       account.withdraw(100)
-      expect(account.transactions[1][:timestamp]).to eq Time.local(2001).strftime('%d/%m/%Y')
+      expect(account.transactions[1][:timestamp]).to eq expectation
     end
   end
 
