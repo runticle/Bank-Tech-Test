@@ -2,7 +2,10 @@ require 'account'
 require 'timecop'
 
 describe Account do
-  let(:account) { described_class.new }
+  let(:statement) { double(:statement, add: true) }
+  let(:printer) { double(:printer) }
+  let(:transaction) { double(:transaction, new: true) }
+  let(:account) { described_class.new(statement, printer, transaction) }
 
   describe '#balance' do
     it 'starts with 0 balance' do
