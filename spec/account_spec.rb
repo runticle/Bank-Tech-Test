@@ -48,6 +48,13 @@ describe Account do
       account.withdraw(100)
       expect(account.transactions[1][:timestamp]).to eq Time.local(2001)
     end
+  end
 
+  describe "#print" do
+    it 'has a store of all transactions' do
+      10.times { account.deposit(10) }
+      10.times { account.withdraw(5) }
+      expect(account.transactions.length).to eq 20
+    end
   end
 end
